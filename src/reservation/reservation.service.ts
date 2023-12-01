@@ -10,7 +10,10 @@ export class ReservationService {
     @InjectRepository(Reservation)
     private reservationRepository: Repository<Reservation>,
   ) {}
-  findReservations() {}
+
+  findReservations() {
+    return this.reservationRepository.find();
+  }
 
   createReservations(reservationDetails: CreateReservationParams) {
     const newReservation = this.reservationRepository.create({

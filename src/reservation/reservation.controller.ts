@@ -6,7 +6,9 @@ import { ReservationService } from './reservation.service';
 export class ReservationController {
   constructor(private reservationService: ReservationService) {}
   @Get()
-  getReservations() {}
+  async getReservations() {
+    return this.reservationService.findReservations();
+  }
 
   @Post()
   createReservation(@Body() createReservationDto: CreateReservationDto) {
