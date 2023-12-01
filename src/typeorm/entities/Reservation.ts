@@ -12,7 +12,7 @@ export class Reservation {
   @Column()
   date: Date;
 
-  @Column()
+  @Column({ default: false })
   completed: boolean;
 
   // Temporary property (this is a FK)
