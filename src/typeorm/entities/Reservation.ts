@@ -3,7 +3,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 @Entity({ name: 'reservations' })
 export class Reservation {
   @PrimaryGeneratedColumn('uuid')
-  id: number;
+  id: string;
 
   // Temporary property (this is a FK)
   @Column()

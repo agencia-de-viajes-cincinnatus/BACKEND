@@ -1,7 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Reservation } from 'src/typeorm/entities/Reservation';
-import { CreateReservationParams } from 'src/utils/types';
+import {
+  CreateReservationParams,
+  UpdateReservationParams,
+} from 'src/utils/types';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -22,5 +25,15 @@ export class ReservationService {
     });
 
     return this.reservationRepository.save(newReservation);
+  }
+
+  updateReservation(
+    id: string,
+    updateReservationDetails: UpdateReservationParams,
+  ) {
+    return this.reservationRepository.update(
+      { id },
+      { ...updateReservationDetails },
+    );
   }
 }
