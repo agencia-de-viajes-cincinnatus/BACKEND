@@ -18,6 +18,10 @@ export class ReservationService {
     return this.reservationRepository.find();
   }
 
+  findReservationById(id) {
+    return this.reservationRepository.findOneBy({ id });
+  }
+
   createReservations(reservationDetails: CreateReservationParams) {
     const newReservation = this.reservationRepository.create({
       ...reservationDetails,
@@ -35,5 +39,9 @@ export class ReservationService {
       { id },
       { ...updateReservationDetails },
     );
+  }
+
+  deleteReservation(id: string) {
+    return this.reservationRepository.delete(id);
   }
 }

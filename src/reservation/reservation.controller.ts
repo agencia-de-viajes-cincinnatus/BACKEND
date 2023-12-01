@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   ParseUUIDPipe,
@@ -19,6 +20,11 @@ export class ReservationController {
     return this.reservationService.findReservations();
   }
 
+  @Get(':id')
+  async getReservationById(@Param('id', ParseUUIDPipe) id: string) {
+    return this.reservationService.findReservationById(id);
+  }
+
   @Post()
   createReservation(@Body() createReservationDto: CreateReservationDto) {
     return this.reservationService.createReservations(createReservationDto);
@@ -32,4 +38,8 @@ export class ReservationController {
     await this.reservationService.updateReservation(id, updateReservationDto);
   }
 
+  @Delete(':id')
+  async deleteReservationById(@Param('id', ParseUUIDPipe) id: string) {
+    await this.reservationService.deleteReservation(id);
+  }
 }
