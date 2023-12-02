@@ -12,7 +12,7 @@ import { CreateReservationDto } from './dtos/CreateReservation.dto';
 import { ReservationService } from './reservation.service';
 import { UpdateReservationDto } from './dtos/UpdateReservation.dto';
 
-@Controller('reservation')
+@Controller('api/reservation')
 export class ReservationController {
   constructor(private reservationService: ReservationService) {}
   @Get()
@@ -25,9 +25,12 @@ export class ReservationController {
     return this.reservationService.findReservationById(id);
   }
 
-  @Post()
-  createReservation(@Body() createReservationDto: CreateReservationDto) {
-    return this.reservationService.createReservations(createReservationDto);
+  @Post(':id')
+  createReservation(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() createReservationDto: CreateReservationDto,
+  ) {
+    return this.reservationService.createReservation(id, createReservationDto);
   }
 
   @Patch(':id')

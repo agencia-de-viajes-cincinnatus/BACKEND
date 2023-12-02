@@ -3,6 +3,8 @@ import { ShunshineModule } from './shunshine/shunshine.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Reservation } from './typeorm/entities/Reservation';
 import { ReservationModule } from './reservation/reservation.module';
+import { Destination } from './typeorm/entities/Destination';
+import { DestinationModule } from './destination/destination.module';
 
 @Module({
   imports: [
@@ -14,10 +16,11 @@ import { ReservationModule } from './reservation/reservation.module';
       username: 'root',
       password: 'cinncinatus',
       database: 'sunshine',
-      entities: [Reservation],
+      entities: [Reservation, Destination],
       synchronize: true,
     }),
     ReservationModule,
+    DestinationModule,
   ],
   controllers: [],
   providers: [],

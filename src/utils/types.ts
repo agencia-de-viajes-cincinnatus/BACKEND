@@ -1,13 +1,27 @@
 export type CreateReservationParams = {
-  destination: string;
   date: Date;
   completed: boolean;
   employee: string;
 };
 
 export type UpdateReservationParams = {
-  destination: string;
   date: Date;
   completed: boolean;
   employee: string;
+};
+
+export type CreateDestinationParams = {
+  country: string;
+  city: string;
+  price: number;
+  description: string;
+  score: number;
+};
+
+export type UpdateDestinationParams = {
+  country: string;
+  city: string;
+  price: number;
+  description: string;
+  score: number;
 };
