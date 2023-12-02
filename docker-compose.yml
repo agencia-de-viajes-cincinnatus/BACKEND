@@ -4,9 +4,8 @@ version: '3.8'
 services:
   mysqldb:
     image: mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=cinncinatus
-      - MYSQL_DATABASE=sunshine
+    env_file:
+      - .env
     ports:  
       - 3307:3306
     volumes:
