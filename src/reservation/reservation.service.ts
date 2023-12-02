@@ -18,11 +18,11 @@ export class ReservationService {
     return this.reservationRepository.find();
   }
 
-  findReservationById(id) {
+  findReservationById(id: string) {
     return this.reservationRepository.findOneBy({ id });
   }
 
-  createReservations(reservationDetails: CreateReservationParams) {
+  createReservation(reservationDetails: CreateReservationParams) {
     const newReservation = this.reservationRepository.create({
       ...reservationDetails,
       date: new Date().toISOString().split('T')[0],

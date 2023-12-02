@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Reservation } from './typeorm/entities/Reservation';
 import { ReservationModule } from './reservation/reservation.module';
 import { Destination } from './typeorm/entities/Destination';
+import { DestinationModule } from './destination/destination.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { Destination } from './typeorm/entities/Destination';
       synchronize: true,
     }),
     ReservationModule,
+    DestinationModule,
   ],
   controllers: [],
   providers: [],

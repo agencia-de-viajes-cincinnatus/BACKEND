@@ -27,7 +27,7 @@ export class ReservationController {
 
   @Post()
   createReservation(@Body() createReservationDto: CreateReservationDto) {
-    return this.reservationService.createReservations(createReservationDto);
+    return this.reservationService.createReservation(createReservationDto);
   }
 
   @Patch(':id')
