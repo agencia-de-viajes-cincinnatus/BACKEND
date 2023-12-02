@@ -25,9 +25,12 @@ export class ReservationController {
     return this.reservationService.findReservationById(id);
   }
 
-  @Post()
-  createReservation(@Body() createReservationDto: CreateReservationDto) {
-    return this.reservationService.createReservation(createReservationDto);
+  @Post(':id')
+  createReservation(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() createReservationDto: CreateReservationDto,
+  ) {
+    return this.reservationService.createReservation(id, createReservationDto);
   }
 
   @Patch(':id')

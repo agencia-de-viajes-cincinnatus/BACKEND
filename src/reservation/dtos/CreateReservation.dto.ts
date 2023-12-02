@@ -1,9 +1,6 @@
 import { IsBoolean, IsNotEmpty, IsString } from 'class-validator';
-import { Destination } from 'src/typeorm/entities/Destination';
 
 export class CreateReservationDto {
-  destination: Destination;
-
   date: Date;
 
   @IsBoolean()
