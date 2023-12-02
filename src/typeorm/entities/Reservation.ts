@@ -1,13 +1,13 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Destination } from './Destination';
 
 @Entity({ name: 'reservations' })
 export class Reservation {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  // Temporary property (this is a FK)
-  @Column()
-  destination: string;
+  @ManyToOne(() => Destination, (destination) => destination.reservations)
+  destination: Destination;
 
   @Column()
   date: Date;

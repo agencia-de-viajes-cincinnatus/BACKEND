@@ -12,7 +12,7 @@ import { CreateReservationDto } from './dtos/CreateReservation.dto';
 import { ReservationService } from './reservation.service';
 import { UpdateReservationDto } from './dtos/UpdateReservation.dto';
 
-@Controller('reservation')
+@Controller('api/reservation')
 export class ReservationController {
   constructor(private reservationService: ReservationService) {}
   @Get()
