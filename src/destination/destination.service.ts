@@ -30,7 +30,7 @@ export class DestinationService {
     return this.destinationRepository.save(newDestination);
   }
 
-  updateReservation(
+  updateDestination(
     id: string,
     updateDestinationDetails: UpdateDestinationParams,
   ) {
@@ -40,7 +40,7 @@ export class DestinationService {
     );
   }
 
-  deleteReservation(id: string) {
+  deleteDestination(id: string) {
     return this.destinationRepository.delete(id);
   }
 }

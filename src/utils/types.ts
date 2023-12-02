@@ -19,7 +19,7 @@ export type CreateDestinationParams = {
   city: string;
   price: number;
   description: string;
-  employee: string;
+  score: number;
 };
 
 export type UpdateDestinationParams = {
@@ -27,5 +27,5 @@ export type UpdateDestinationParams = {
   city: string;
   price: number;
   description: string;
-  employee: string;
+  score: number;
 };

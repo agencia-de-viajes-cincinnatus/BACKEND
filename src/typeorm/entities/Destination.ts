@@ -21,7 +21,6 @@ export class Destination {
   @OneToMany(() => Reservation, (reservation) => reservation.destination)
   reservations: Reservation[];
 
-  // Temporary property (this is a FK)
   @Column()
-  employee: string;
+  score: number;
 }
