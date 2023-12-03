@@ -3,7 +3,7 @@ import { ReservationModule } from './reservation/reservation.module';
 import { DestinationModule } from './destination/destination.module';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
-import { ClienteModule } from './cliente/cliente.module';
+import { ClientModule } from './client/client.module';
 
 @Module({
   imports: [
@@ -11,7 +11,7 @@ import { ClienteModule } from './cliente/cliente.module';
     ReservationModule,
     DestinationModule,
     DatabaseModule,
-    ClienteModule,
+    ClientModule,
   ],
   controllers: [],
   providers: [],
