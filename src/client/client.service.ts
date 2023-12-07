@@ -33,10 +33,18 @@ export class ClientService {
   }
 
   async update(id: string, updateClientDto: UpdateClientDto) {
-    return await this.clientRepository.update(id, updateClientDto);
+    try {
+      return await this.clientRepository.update(id, updateClientDto);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async remove(id: string) {
-    return await this.clientRepository.softDelete(id);
+    try {
+      return await this.clientRepository.softDelete(id);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
