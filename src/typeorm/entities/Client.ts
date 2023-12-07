@@ -20,9 +20,6 @@ export class Client {
   address: string;
 
   @Column()
-  country: string;
-
-  @Column()
   identification: string;
 
   @Column()

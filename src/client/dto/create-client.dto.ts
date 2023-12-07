@@ -12,9 +12,6 @@ export class CreateClientDto {
   @IsString()
   @IsNotEmpty()
   address: string;
-  @IsString()
-  @IsNotEmpty()
-  country: string;
 
   @IsString()
   @IsNotEmpty()
