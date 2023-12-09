@@ -2,8 +2,10 @@ import {
   Column,
   DeleteDateColumn,
   Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { Country } from './Country';
 
 @Entity({ name: 'clients' })
 export class Client {
@@ -18,6 +20,9 @@ export class Client {
 
   @Column()
   address: string;
+
+  @Column()
+  country: string;
 
   @Column()
   identification: string;
@@ -39,4 +44,7 @@ export class Client {
 
   @DeleteDateColumn()
   deletedAt: Date;
+
+  @ManyToOne(() => Country, (country) => country.id)
+  country_id: Country;
 }

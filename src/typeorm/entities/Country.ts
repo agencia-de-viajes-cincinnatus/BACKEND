@@ -1,15 +1,11 @@
-import {
-  Column,
-  DeleteDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, DeleteDateColumn, Entity } from 'typeorm';
+
 @Entity({ name: 'countries' })
 export class Country {
-  @PrimaryGeneratedColumn('uuid')
+  @Column({ primary: true, unique: true, nullable: false, length: 3 })
   id: string;
 
-  @Column()
+  @Column({ type: 'varchar', nullable: false })
   country: string;
 
   @DeleteDateColumn()
