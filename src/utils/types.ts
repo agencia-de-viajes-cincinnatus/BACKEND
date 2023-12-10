@@ -8,6 +8,7 @@ export type UpdateReservationParams = {
   date: Date;
   completed: boolean;
   employee: string;
+  destination?: string;
 };
 
 export type CreateDestinationParams = {
