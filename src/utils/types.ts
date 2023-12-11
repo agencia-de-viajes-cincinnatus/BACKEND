@@ -2,6 +2,7 @@ export type CreateReservationParams = {
   date: Date;
   completed: boolean;
   employee: string;
+  passengers: number;
 };
 
 export type UpdateReservationParams = {
@@ -9,6 +10,7 @@ export type UpdateReservationParams = {
   completed: boolean;
   employee: string;
   destination?: string;
+  passengers: number;
 };
 
 export type CreateDestinationParams = {

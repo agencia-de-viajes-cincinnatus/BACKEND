@@ -1,4 +1,10 @@
-import { IsBoolean, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import {
+  IsBoolean,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 export class UpdateReservationDto {
   @IsBoolean()
@@ -14,4 +20,8 @@ export class UpdateReservationDto {
 
   @IsOptional()
   destination: string;
+
+  @IsNumber()
+  @IsNotEmpty()
+  passengers: number;
 }

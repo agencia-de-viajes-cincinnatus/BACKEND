@@ -1,4 +1,4 @@
-import { IsBoolean, IsNotEmpty, IsString } from 'class-validator';
+import { IsBoolean, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class CreateReservationDto {
   @IsBoolean()
@@ -11,4 +11,8 @@ export class CreateReservationDto {
 
   @IsNotEmpty()
   date: Date;
+
+  @IsNumber()
+  @IsNotEmpty()
+  passengers: number;
 }

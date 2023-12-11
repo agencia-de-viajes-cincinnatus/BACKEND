@@ -18,4 +18,7 @@ export class Reservation {
   // Temporary property (this is a FK)
   @Column()
   employee: string;
+
+  @Column()
+  passengers: number;
 }
