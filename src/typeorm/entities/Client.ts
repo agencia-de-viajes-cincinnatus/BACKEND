@@ -22,9 +22,6 @@ export class Client {
   address: string;
 
   @Column()
-  country: string;
-
-  @Column()
   identification: string;
 
   @Column()
@@ -45,6 +42,9 @@ export class Client {
   @DeleteDateColumn()
   deletedAt: Date;
 
-  @ManyToOne(() => Country, (country) => country.id)
-  country_id: Country;
+  @ManyToOne(() => Country, (country) => country.id, {
+    eager: true,
+    cascade: true,
+  })
+  country: Country;
 }

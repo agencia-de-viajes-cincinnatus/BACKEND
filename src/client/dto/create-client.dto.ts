@@ -14,6 +14,9 @@ export class CreateClientDto {
   address: string;
 
   @IsString()
+  country?: string;
+
+  @IsString()
   @IsNotEmpty()
   identification: string;
 
