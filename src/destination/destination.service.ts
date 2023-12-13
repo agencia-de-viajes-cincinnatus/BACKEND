@@ -6,6 +6,7 @@ import {
   UpdateDestinationParams,
 } from 'src/utils/types';
 import { Repository } from 'typeorm';
+import * as fs from 'fs';
 
 @Injectable()
 export class DestinationService {
@@ -40,7 +41,26 @@ export class DestinationService {
     );
   }
 
-  deleteDestination(id: string) {
+  uploadFile(id: string, file: string) {
+    if (file) {
+      return this.destinationRepository.update({ id }, { image: file });
+    }
+
+    return {
+      message: 'No file provided',
+    };
+  }
+
+  async deleteDestination(id: string) {
+    const destination = await this.destinationRepository.findOneBy({ id });
+
+    fs.unlink(`./uploads/destinationImages/${destination.image}`, (err) => {
+      if (err) {
+        console.error(err);
+      }
+      console.log('File deleted successfully');
+    });
+
     return this.destinationRepository.delete(id);
   }
 }
