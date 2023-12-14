@@ -1,26 +1,56 @@
 import { Injectable } from '@nestjs/common';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
 import { UpdateEmployeeDto } from './dto/update-employee.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Employee } from 'src/typeorm/entities/Employee';
 
 @Injectable()
 export class EmployeeService {
-  create(createEmployeeDto: CreateEmployeeDto) {
-    return 'This action adds a new employee';
+  constructor(
+    @InjectRepository(Employee)
+    private employeeRepository: Repository<Employee>,
+  ) {}
+
+  async create(createEmployeeDto: CreateEmployeeDto) {
+    try {
+      return this.employeeRepository.save({
+        ...createEmployeeDto,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  findAll() {
-    return `This action returns all employee`;
+  async findAllEmployee() {
+    try {
+      return this.employeeRepository.find();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} employee`;
+  async findEmployeeById(id: string) {
+    try {
+      return this.employeeRepository.findOneBy({ id });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  update(id: number, updateEmployeeDto: UpdateEmployeeDto) {
-    return `This action updates a #${id} employee`;
+  async update(id: string, updateEmployeeDto: UpdateEmployeeDto) {
+    try {
+      return this.employeeRepository.update(id, updateEmployeeDto);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} employee`;
+  async remove(id: string) {
+    try {
+      return this.employeeRepository.softDelete(id);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
