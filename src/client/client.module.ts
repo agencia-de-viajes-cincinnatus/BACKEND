@@ -11,4 +11,4 @@ import { CountryService } from 'src/country/country.service';
   controllers: [ClientController],
   providers: [ClientService, CountryService],
 })
-export class ClientModule {}
+export class ClientModule { }

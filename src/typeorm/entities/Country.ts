@@ -10,7 +10,7 @@ export class Country {
   country: string;
 
   @DeleteDateColumn()
-  deletedAt: Date;
+  deletedAt?: Date;
 
   @OneToMany(() => Client, (client) => client.country, {})
   clients: Client[];
