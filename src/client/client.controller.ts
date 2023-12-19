@@ -6,12 +6,13 @@ import {
   Patch,
   Param,
   Delete,
+  ParseUUIDPipe,
 } from '@nestjs/common';
 import { ClientService } from './client.service';
 import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
 
-@Controller('client')
+@Controller('api/v1/client')
 export class ClientController {
   constructor(private readonly clientService: ClientService) {}
 
@@ -21,22 +22,22 @@ export class ClientController {
   }
 
   @Get()
-  findAll() {
-    return this.clientService.findAll();
+  findAllClients() {
+    return this.clientService.findAllClients();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.clientService.findOne(+id);
+  findClientById(@Param('id', ParseUUIDPipe) id: string) {
+    return this.clientService.findClientById(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateClientDto: UpdateClientDto) {
-    return this.clientService.update(+id, updateClientDto);
+    return this.clientService.update(id, updateClientDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.clientService.remove(+id);
+    return this.clientService.remove(id);
   }
 }

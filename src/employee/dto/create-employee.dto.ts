@@ -1,6 +1,6 @@
-import { IsNotEmpty, IsString, MaxLength } from 'class-validator';
+import { IsNotEmpty, IsString } from 'class-validator';
 
-export class CreateClientDto {
+export class CreateEmployeeDto {
   @IsString()
   @IsNotEmpty()
   name: string;
@@ -11,26 +11,19 @@ export class CreateClientDto {
 
   @IsString()
   @IsNotEmpty()
-  address: string;
-
-  @IsString()
-  country?: string;
+  email: string;
 
   @IsString()
   @IsNotEmpty()
   identification: string;
 
   @IsString()
-  @MaxLength(13)
   @IsNotEmpty()
   phone: string;
 
   @IsString()
   @IsNotEmpty()
-  email: string;
-
-  @IsString()
-  preferences: string;
+  rol: string;
 
   @IsString()
   @IsNotEmpty()

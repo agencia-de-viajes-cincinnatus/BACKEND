@@ -23,4 +23,7 @@ export class Destination {
 
   @Column()
   score: number;
+
+  @Column({ nullable: true })
+  image: string;
 }
