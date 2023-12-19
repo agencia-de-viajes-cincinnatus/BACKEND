@@ -2,13 +2,11 @@ import {
   Column,
   DeleteDateColumn,
   Entity,
-  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Country } from './Country';
 
-@Entity({ name: 'clients' })
-export class Client {
+@Entity({ name: 'employee' })
+export class Employee {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -19,7 +17,7 @@ export class Client {
   lastname: string;
 
   @Column()
-  address: string;
+  email: string;
 
   @Column()
   identification: string;
@@ -28,10 +26,7 @@ export class Client {
   phone: string;
 
   @Column()
-  email: string;
-
-  @Column()
-  preferences: string;
+  rol: string;
 
   @Column()
   username: string;
@@ -41,10 +36,4 @@ export class Client {
 
   @DeleteDateColumn()
   deletedAt: Date;
-
-  @ManyToOne(() => Country, (country) => country.id, {
-    eager: true,
-    cascade: true,
-  })
-  country: Country;
 }

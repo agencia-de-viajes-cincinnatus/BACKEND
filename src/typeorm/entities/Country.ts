@@ -1,17 +1,17 @@
-import {
-  Column,
-  DeleteDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
-@Entity({ name: 'countries' })
+import { Column, DeleteDateColumn, Entity, OneToMany } from 'typeorm';
+import { Client } from './Client';
+
+@Entity({ name: 'country' })
 export class Country {
-  @PrimaryGeneratedColumn('uuid')
+  @Column({ primary: true, unique: true, nullable: false, length: 3 })
   id: string;
 
-  @Column()
+  @Column({ nullable: false })
   country: string;
 
   @DeleteDateColumn()
   deletedAt: Date;
+
+  @OneToMany(() => Client, (client) => client.country, {})
+  clients: Client[];
 }
