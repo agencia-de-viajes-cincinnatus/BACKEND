@@ -4,6 +4,7 @@ import { DestinationModule } from './destination/destination.module';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
 import { ClientModule } from './client/client.module';
+import { SupplierModule } from './supplier/supplier.module';
 import { CountryModule } from './country/country.module';
 import { EmployeeModule } from './employee/employee.module';
 
@@ -14,6 +15,7 @@ import { EmployeeModule } from './employee/employee.module';
     DestinationModule,
     DatabaseModule,
     ClientModule,
+    SupplierModule,
     CountryModule,
     EmployeeModule,
   ],
