@@ -11,25 +11,9 @@ export class CreateEmployeeDto {
 
   @IsString()
   @IsNotEmpty()
-  email: string;
-
-  @IsString()
-  @IsNotEmpty()
   identification: string;
 
   @IsString()
   @IsNotEmpty()
   phone: string;
-
-  @IsString()
-  @IsNotEmpty()
-  rol: string;
-
-  @IsString()
-  @IsNotEmpty()
-  username: string;
-
-  @IsString()
-  @IsNotEmpty()
-  password: string;
 }
