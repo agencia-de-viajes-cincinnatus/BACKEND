@@ -23,17 +23,5 @@ export class CreateClientDto {
   phone: string;
 
   @IsString()
-  @IsNotEmpty()
-  email: string;
-
-  @IsString()
   preferences: string;
-
-  @IsString()
-  @IsNotEmpty()
-  username: string;
-
-  @IsString()
-  @IsNotEmpty()
-  password: string;
 }
