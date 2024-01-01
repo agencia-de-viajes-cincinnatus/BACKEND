@@ -1,22 +1,25 @@
-import { IsEmail, IsString, MaxLength } from 'class-validator';
-import { DeleteDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  DeleteDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity({ name: 'users' })
 export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @IsString()
-  name: string;
+  @Column()
+  username: string;
 
-  @IsEmail()
+  @Column({ unique: true })
   email: string;
 
-  @IsString()
+  @Column({ default: 'user' })
   rol: string;
 
-  @IsString()
-  @MaxLength(8)
+  @Column({ nullable: true })
   password: string;
 
   @DeleteDateColumn()
