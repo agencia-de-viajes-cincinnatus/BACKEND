@@ -7,6 +7,8 @@ import { ClientModule } from './client/client.module';
 import { SupplierModule } from './supplier/supplier.module';
 import { CountryModule } from './country/country.module';
 import { EmployeeModule } from './employee/employee.module';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -18,6 +20,8 @@ import { EmployeeModule } from './employee/employee.module';
     SupplierModule,
     CountryModule,
     EmployeeModule,
+    UserModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],

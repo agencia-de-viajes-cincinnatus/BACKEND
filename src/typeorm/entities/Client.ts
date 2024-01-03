@@ -28,16 +28,7 @@ export class Client {
   phone: string;
 
   @Column()
-  email: string;
-
-  @Column()
   preferences: string;
-
-  @Column()
-  username: string;
-
-  @Column()
-  password: string;
 
   @DeleteDateColumn()
   deletedAt: Date;

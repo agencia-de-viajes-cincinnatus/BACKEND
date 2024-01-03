@@ -17,22 +17,10 @@ export class Employee {
   lastname: string;
 
   @Column()
-  email: string;
-
-  @Column()
   identification: string;
 
   @Column()
   phone: string;
-
-  @Column()
-  rol: string;
-
-  @Column()
-  username: string;
-
-  @Column()
-  password: string;
 
   @DeleteDateColumn()
   deletedAt: Date;
