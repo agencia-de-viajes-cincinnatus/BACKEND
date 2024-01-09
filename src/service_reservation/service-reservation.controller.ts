@@ -2,7 +2,7 @@
 
 import { Controller, Get, Post, Put, Body, Param } from '@nestjs/common';
 import { ServiceReservationService } from './service-reservation.service';
-import { CreateServiceReservationDto } from './dto/CreateServiceReservation.dto';
+import { CreateServiceReservationDto } from './dto/create-service-reservation.dto';
 import { UpdateServiceReservationDto } from './dto/update-service-reservation.dto';
 
 @Controller('services')

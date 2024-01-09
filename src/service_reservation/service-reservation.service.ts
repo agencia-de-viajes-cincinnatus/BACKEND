@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { CreateServiceReservationDto } from './dto/CreateServiceReservation.dto';
+import { CreateServiceReservationDto } from './dto/create-service-reservation.dto';
 import { UpdateServiceReservationDto } from './dto/update-service-reservation.dto';
 @Injectable()
 export class ServiceReservationService {
