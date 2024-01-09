@@ -28,3 +28,16 @@ export type UpdateDestinationParams = {
   description: string;
   score: number;
 };
+
+export type CreateServiceParams = {
+  date: Date;
+  type: string;
+  price: number;
+};
+
+export type UpdateServiceParams = {
+  date: Date;
+  type: string;
+  price: number;
+  supplier?: string;
+};

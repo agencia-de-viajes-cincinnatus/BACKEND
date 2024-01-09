@@ -61,7 +61,7 @@ export class ReservationService {
 
     if (!destination)
       throw new HttpException(
-        'Destination not found. Cannot create Reservation',
+        'Destination not found. Cannot update Reservation',
         HttpStatus.BAD_REQUEST,
       );
 

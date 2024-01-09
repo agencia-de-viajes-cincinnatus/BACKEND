@@ -11,7 +11,7 @@ import { SupplierService } from './supplier.service';
 import { CreateSupplierDto } from './dto/create-supplier.dto';
 import { UpdateSupplierDto } from './dto/update-supplier.dto';
 
-@Controller('api/v1/supplier')
+@Controller('api/supplier')
 export class SupplierController {
   constructor(private supplierService: SupplierService) {}
 
