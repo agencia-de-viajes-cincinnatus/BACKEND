@@ -1,38 +1,45 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+// import { CreateServiceReservationDto } from './dto/create-service-reservation.dto';
+// import { UpdateServiceReservationDto } from './dto/update-service-reservation.dto';
+import { service_reservation } from 'src/typeorm/entities/servicio-reserva';
+import { Repository } from 'typeorm';
 import { CreateServiceReservationDto } from './dto/create-service-reservation.dto';
 import { UpdateServiceReservationDto } from './dto/update-service-reservation.dto';
+
 @Injectable()
 export class ServiceReservationService {
-  private readonly reservations: Record<string, CreateServiceReservationDto> =
-    {};
-
-  reserveService(serviceName: string): string {
-    const reservationId = this.generateReservationId();
-    const reservation: CreateServiceReservationDto = {
-      serviceName,
-      reservationDate: new Date().toISOString(),
-    };
-    this.reservations[reservationId] = reservation;
-    return reservationId;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  createReservation(id: string, body: CreateServiceReservationDto) {
+    throw new Error('Method not implemented.');
   }
-  updateReservation(
-    reservationId: string,
-    updateDto: UpdateServiceReservationDto,
-  ): void {
-    if (!this.reservations[reservationId]) {
-      throw new NotFoundException('Reservation not found');
-    }
-
-    this.reservations[reservationId] = {
-      ...this.reservations[reservationId],
-      ...updateDto,
-    };
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  updateReservation(reservationId: string, body: UpdateServiceReservationDto) {
+    throw new Error('Method not implemented.');
   }
-  getReservations(): string[] {
-    return Object.keys(this.reservations);
+  getReservations() {
+    throw new Error('Method not implemented.');
+  }
+  constructor(
+    @InjectRepository(service_reservation)
+    private readonly serviceReservationRepository: Repository<service_reservation>,
+  ) {}
+
+  // async getServiceReservationById(id: string): Promise<service_reservation> {
+  //   return await this.serviceReservationRepository.findOne(id);
+  // }
+
+  async getServiceReservations(): Promise<service_reservation[]> {
+    return await this.serviceReservationRepository.find();
   }
 
-  private generateReservationId(): string {
-    return Math.random().toString(36).substring(7);
+  async createServiceReservation(
+    serviceReservation: service_reservation,
+  ): Promise<service_reservation> {
+    return await this.serviceReservationRepository.save(serviceReservation);
+  }
+
+  async deleteServiceReservation(id: string): Promise<void> {
+    await this.serviceReservationRepository.delete(id);
   }
 }
