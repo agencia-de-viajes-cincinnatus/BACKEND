@@ -1,38 +1,41 @@
 // app.controller.ts
 
-import { Controller, Get, Post, Put, Body, Param } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  // Put,
+  Body,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { ServiceReservationService } from './service-reservation.service';
-import { CreateServiceReservationDto } from './dto/create-service-reservation.dto';
-import { UpdateServiceReservationDto } from './dto/update-service-reservation.dto';
+// import { CreateServiceReservationDto } from './dto/create-service-reservation.dto';
+// import { UpdateServiceReservationDto } from './dto/update-service-reservation.dto';
+import { service_reservation } from 'src/typeorm/entities/servicio-reserva';
 
 @Controller('api/service-reservation/reservation')
-export class AppController {
+export class ServiceReservationController {
   constructor(
     private readonly serviceReservationService: ServiceReservationService,
   ) {}
 
-  @Post('reserve')
-  reserveService(@Body() body: CreateServiceReservationDto): {
-    reservationId: string;
-  } {
-    const { serviceName } = body;
-    const reservationId =
-      this.serviceReservationService.reserveService(serviceName);
-    return { reservationId };
+  @Get()
+  async getServiceReservations(): Promise<service_reservation[]> {
+    return await this.serviceReservationService.getServiceReservations();
   }
 
-  @Put('update/:reservationId')
-  updateReservation(
-    @Param('reservationId') reservationId: string,
-    @Body() body: UpdateServiceReservationDto,
-  ): { success: boolean } {
-    this.serviceReservationService.updateReservation(reservationId, body);
-    return { success: true };
+  @Post()
+  async createServiceReservation(
+    @Body() serviceReservation: service_reservation,
+  ): Promise<service_reservation> {
+    return await this.serviceReservationService.createServiceReservation(
+      serviceReservation,
+    );
   }
 
-  @Get('reservations')
-  getReservations(): { reservations: string[] } {
-    const reservations = this.serviceReservationService.getReservations();
-    return { reservations };
+  @Delete(':id')
+  async deleteServiceReservation(@Param('id') id: string): Promise<void> {
+    await this.serviceReservationService.deleteServiceReservation(id);
   }
 }
