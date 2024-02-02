@@ -1,11 +1,11 @@
-import { IsString, IsNotEmpty, IsDateString } from 'class-validator';
+import { IsNotEmpty, IsDateString } from 'class-validator';
 
 export class CreateServiceReservationDto {
-  @IsString()
+  @IsDateString()
   @IsNotEmpty()
-  readonly serviceName: string;
+  readonly reservation: string;
 
   @IsDateString()
   @IsNotEmpty()
-  readonly reservationDate: string;
+  readonly service: string;
 }
