@@ -29,7 +29,7 @@ export class AuthService {
     });
   }
 
-  async login({ email, password }: LoginDto) {
+  async login({ email, password }: LoginDto, response) {
     const user = await this.userService.findOneByEmail(email);
 
     if (!user) {
@@ -43,6 +43,8 @@ export class AuthService {
     const payload = { email: user.email };
 
     const token = await this.jwtservice.signAsync(payload);
+
+    response.cookie('jwt', token, { httpOnly: true });
 
     return { token, email };
   }
