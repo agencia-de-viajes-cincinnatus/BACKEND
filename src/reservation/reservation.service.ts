@@ -22,7 +22,10 @@ export class ReservationService {
   }
 
   findReservationById(id: string) {
-    return this.reservationRepository.findOneBy({ id });
+    return this.reservationRepository.findOne({
+      where: { id },
+      relations: ['destination'],
+    });
   }
 
   async createReservation(
@@ -41,20 +44,30 @@ export class ReservationService {
 
     const newReservation = this.reservationRepository.create({
       ...reservationDetails,
-      date: new Date().toISOString().split('T')[0],
+      date: new Date(reservationDetails.date).toISOString().split('T')[0],
       destination,
     });
 
     return this.reservationRepository.save(newReservation);
   }
 
-  updateReservation(
+  async updateReservation(
     id: string,
     updateReservationDetails: UpdateReservationParams,
   ) {
+    const destination = await this.destinationRepository.findOneBy({
+      id: updateReservationDetails?.destination,
+    });
+
+    if (!destination)
+      throw new HttpException(
+        'Destination not found. Cannot update Reservation',
+        HttpStatus.BAD_REQUEST,
+      );
+
     return this.reservationRepository.update(
       { id },
-      { ...updateReservationDetails },
+      { ...updateReservationDetails, destination },
     );
   }
 
