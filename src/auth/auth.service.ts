@@ -22,14 +22,18 @@ export class AuthService {
     if (user) {
       throw new BadRequestException('User already exists');
     }
-    return await this.userService.create({
+    const newUser = await this.userService.create({
       username,
       email,
       password: await bcryptjs.hash(password, 10),
     });
+
+    delete newUser.password;
+
+    return newUser;
   }
 
-  async login({ email, password }: LoginDto) {
+  async login({ email, password }: LoginDto, response) {
     const user = await this.userService.findOneByEmail(email);
 
     if (!user) {
@@ -43,6 +47,8 @@ export class AuthService {
     const payload = { email: user.email };
 
     const token = await this.jwtservice.signAsync(payload);
+
+    response.cookie('jwt', token, { httpOnly: true });
 
     return { token, email };
   }
